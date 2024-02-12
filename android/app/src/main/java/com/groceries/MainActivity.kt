@@ -1,5 +1,6 @@
 package com.groceries
 
+import android.os.Bundle;
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -19,4 +20,16 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
+   /**
+    * REACT-NATIVE-SCREENS OVERRIDE
+    * On Android the View state is not persisted consistently across Activity
+    * restarts, which can lead to crashes in those cases. This code specifically
+    * discards any Activity state persisted during the Activity restart process.
+    *
+    * https://github.com/software-mansion/react-native-screens?tab=readme-ov-file#android
+    */
+  override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(null);
+  }
 }
