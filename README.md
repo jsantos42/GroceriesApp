@@ -1,3 +1,6 @@
+> ⚠️ Careful when upgrading the tailwindcss version to >3.3.2 [(see explanation
+> here)](https://stackoverflow.com/questions/76688256/getting-error-use-processcss-thencb-to-work-with-async-plugins)
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
