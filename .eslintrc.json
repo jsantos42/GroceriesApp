@@ -1,4 +1,4 @@
 {
-  "root": true,
-  "extends": ["@react-native", "plugin:prettier/recommended"]
+	"root": true,
+	"extends": ["@react-native", "plugin:prettier/recommended"]
 }
