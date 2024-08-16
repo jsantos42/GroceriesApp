@@ -38,6 +38,7 @@ export const InputField = ({
 	return (
 		<>
 			<TextInput
+				className="text-base p-3 tracking-wider"
 				placeholder="Insert item here"
 				value={input}
 				onChangeText={handleTextInput}

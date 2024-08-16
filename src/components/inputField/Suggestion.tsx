@@ -9,8 +9,8 @@ export const Suggestion = ({
 }) => (
 	<Pressable
 		key={suggestion}
-		className="justify-center p-3"
+		className="p-3 justify-center"
 		onPress={() => onSelectSuggestion(suggestion)}>
-		<Text>{suggestion}</Text>
+		<Text className="text-base tracking-wider">{suggestion}</Text>
 	</Pressable>
 );
