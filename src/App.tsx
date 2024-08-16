@@ -30,7 +30,7 @@ function App(): React.JSX.Element {
 	}
 
 	return (
-		<SafeAreaView>
+		<SafeAreaView className="flex-1">
 			<InputField {...{saveNewItem}} />
 			<FlatList
 				className={'flex'}
