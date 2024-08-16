@@ -23,15 +23,21 @@ function App(): React.JSX.Element {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 
+	function searchItem(input: string) {
+		// TODO: return suggestion from trie
+		return ['cucu', 'foo', 'bar'];
+	}
+
 	function saveNewItem(input: string) {
-		//check if item does not exist already
+		// TODO: check if item does not exist already
 		const newRecord = getNewEntryFromInput(input);
+		// TODO: add to trie
 		setGroceryList([...groceryList, newRecord]);
 	}
 
 	return (
 		<SafeAreaView className="flex-1">
-			<InputField {...{saveNewItem}} />
+			<InputField {...{searchItem, saveNewItem}} />
 			<FlatList
 				className={'flex'}
 				data={groceryList}
