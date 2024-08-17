@@ -17,6 +17,8 @@ export const InputField = ({
 		setInput(text);
 		if (isInputLongEnough(text)) {
 			refreshSuggestions(text);
+		} else {
+			setSuggestions([]);
 		}
 	}
 
