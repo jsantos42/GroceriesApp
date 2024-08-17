@@ -37,19 +37,26 @@ export const InputField = ({
 		Keyboard.dismiss();
 	}
 
+	function hideSuggestionOverlay() {
+		setSuggestions([]);
+	}
+
 	return (
 		<>
 			<TextInput
-				className="text-base p-3 tracking-wider"
+				className="text-base p-3 tracking-wider z-30"
+				style={{elevation: 3}}
 				placeholder="Insert item here"
 				value={input}
 				onChangeText={handleTextInput}
 				onSubmitEditing={e => handleTextSubmit(e.nativeEvent.text)}
 			/>
-			<SuggestionsOverlay
-				suggestions={suggestions}
-				onSelectSuggestion={handleTextSubmit}
-			/>
+			{areThereSuggestions(suggestions) && (
+				<SuggestionsOverlay
+					onSelectSuggestion={handleTextSubmit}
+					{...{suggestions, hideSuggestionOverlay}}
+				/>
+			)}
 		</>
 	);
 };

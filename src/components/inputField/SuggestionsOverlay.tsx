@@ -1,7 +1,7 @@
-import {Overlay} from '@rneui/base';
+import {Pressable, View} from 'react-native';
 import {Suggestion} from './Suggestion';
-import {areThereSuggestions} from './utils';
-import {useStyles} from '@utils/styles';
+import {getBackgroundColor} from '@utils/styles';
+import {useAppContext} from '../AppProvider';
 
 export const SuggestionsOverlay = ({
 	suggestions,
@@ -12,19 +12,25 @@ export const SuggestionsOverlay = ({
 	onSelectSuggestion: (text: string) => void;
 	hideSuggestionOverlay: () => void;
 }) => {
-	const styles = useStyles();
+	const {theme} = useAppContext();
 
 	return (
-		<Overlay
-			isVisible={areThereSuggestions(suggestions)}
-			overlayStyle={styles.overlay}
-			onBackdropPress={hideSuggestionOverlay}>
-			{suggestions.map(suggestion => (
-				<Suggestion
-					key={suggestion}
-					{...{suggestion, onSelectSuggestion}}
-				/>
-			))}
-		</Overlay>
+		<>
+			<View
+				className={`absolute top-16 z-20 w-full ${getBackgroundColor(theme)}`}
+				style={{elevation: 2}}>
+				{suggestions.map(suggestion => (
+					<Suggestion
+						key={suggestion}
+						{...{suggestion, onSelectSuggestion}}
+					/>
+				))}
+			</View>
+			<Pressable
+				className={`absolute top-5 z-10 w-full h-full ${getBackgroundColor(theme)} opacity-50`}
+				style={{elevation: 1}}
+				onPress={hideSuggestionOverlay}
+			/>
+		</>
 	);
 };
