@@ -36,6 +36,11 @@ function App(): React.JSX.Element {
 		setGroceryList([...groceryList, newRecord]);
 	}
 
+	function markAsChecked(item: GroceryItem) {
+		// TODO: remove from list
+		console.warn(item.label);
+	}
+
 	return (
 		<AppProvider>
 			<SafeAreaView className="flex-1">
@@ -43,7 +48,9 @@ function App(): React.JSX.Element {
 				<FlatList
 					className={'flex'}
 					data={groceryList}
-					renderItem={({item}) => <GroceryItemCheckbox {...{item}} />}
+					renderItem={({item}) => (
+						<GroceryItemCheckbox {...{item, markAsChecked}} />
+					)}
 					keyExtractor={i => i.name}
 				/>
 			</SafeAreaView>

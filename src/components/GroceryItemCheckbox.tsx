@@ -1,17 +1,24 @@
 import {CheckBox} from '@rneui/base';
-import {GroceryItemState} from 'src/types';
+import {GroceryItem} from 'src/types';
 import {useStyles} from '@utils/styles';
 
-export const GroceryItemCheckbox = ({item}: {item: GroceryItemState}) => {
+export const GroceryItemCheckbox = ({
+	item,
+	markAsChecked,
+}: {
+	item: GroceryItem;
+	markAsChecked: (item: GroceryItem) => void;
+}) => {
 	const styles = useStyles();
 
 	return (
 		<CheckBox
-			className={'text-black bg-red-600'}
-			checked={true}
+			className={'text-black text-base'}
+			checked={false}
 			title={item.label}
 			containerStyle={styles.checkBoxContainer}
 			textStyle={styles.checkBoxText}
+			onIconPress={() => markAsChecked(item)}
 		/>
 	);
 };
