@@ -28,7 +28,7 @@ export const useStyles = () => {
 type Theme = 'dark' | 'light' | undefined | null;
 
 export function getBackgroundColor(theme: Theme) {
-	return theme === 'dark' ? 'black' : 'white';
+	return theme === 'dark' ? 'bg-black' : 'bg-white';
 }
 
 export function getTextColor(theme: Theme) {
