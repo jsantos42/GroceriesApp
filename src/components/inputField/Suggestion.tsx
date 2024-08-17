@@ -1,6 +1,6 @@
 import {Pressable, Text} from 'react-native';
 import {useAppContext} from '../AppProvider';
-import {getTextColor} from '@utils/theme';
+import {getTextColor} from '@utils/styles';
 
 export const Suggestion = ({
 	suggestion,

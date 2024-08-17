@@ -1,9 +1,7 @@
 import {Overlay} from '@rneui/base';
-import {StyleSheet} from 'react-native';
 import {Suggestion} from './Suggestion';
 import {areThereSuggestions} from './utils';
-import {useAppContext} from '../AppProvider';
-import {getBackgroundColor} from '@utils/theme';
+import {useStyles} from '@utils/styles';
 
 export const SuggestionsOverlay = ({
 	suggestions,
@@ -14,15 +12,7 @@ export const SuggestionsOverlay = ({
 	onSelectSuggestion: (text: string) => void;
 	hideSuggestionOverlay: () => void;
 }) => {
-	const {theme} = useAppContext();
-	const styles = StyleSheet.create({
-		overlay: {
-			width: '100%',
-			position: 'absolute',
-			top: 50,
-			backgroundColor: getBackgroundColor(theme),
-		},
-	});
+	const styles = useStyles();
 
 	return (
 		<Overlay
