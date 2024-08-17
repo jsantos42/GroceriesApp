@@ -4,6 +4,7 @@ import {GroceryItem} from './types';
 import {tempGroceryList} from './initialData';
 import {GroceryItemCheckbox} from './components/GroceryItemCheckbox';
 import {InputField} from './components/InputField';
+import {AppProvider} from './components/AppProvider';
 
 function App(): React.JSX.Element {
 	const [groceryList, setGroceryList] =
@@ -36,15 +37,17 @@ function App(): React.JSX.Element {
 	}
 
 	return (
-		<SafeAreaView className="flex-1">
-			<InputField {...{searchItem, saveNewItem}} />
-			<FlatList
-				className={'flex'}
-				data={groceryList}
-				renderItem={({item}) => <GroceryItemCheckbox {...{item}} />}
-				keyExtractor={i => i.name}
-			/>
-		</SafeAreaView>
+		<AppProvider>
+			<SafeAreaView className="flex-1">
+				<InputField {...{searchItem, saveNewItem}} />
+				<FlatList
+					className={'flex'}
+					data={groceryList}
+					renderItem={({item}) => <GroceryItemCheckbox {...{item}} />}
+					keyExtractor={i => i.name}
+				/>
+			</SafeAreaView>
+		</AppProvider>
 	);
 }
 
