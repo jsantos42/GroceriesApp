@@ -5,9 +5,6 @@ export const useStyles = () => {
 	const {theme} = useAppContext();
 
 	return StyleSheet.create({
-		backgroundColor: {
-			backgroundColor: getBackgroundColor(theme),
-		},
 		textColor: {
 			color: getContrastColor(theme),
 		},
@@ -17,10 +14,9 @@ export const useStyles = () => {
 		checkBoxText: {
 			fontSize: 18,
 		},
-		inputField: {
-			elevation: 3,
-			borderBottomWidth: 1,
-			borderBottomColor: getContrastColor(theme),
+		newItemCheckBox: {
+			width: 0,
+			backgroundColor: 'transparent',
 		},
 		elevation1: {
 			elevation: 1,

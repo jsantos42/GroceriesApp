@@ -1,11 +1,11 @@
 import {useState} from 'react';
-import {Keyboard, TextInput} from 'react-native';
+import {Keyboard} from 'react-native';
 import {areThereSuggestions, isInputLongEnough} from './utils';
 import {SuggestionsOverlay} from './SuggestionsOverlay';
-import {useStyles} from '@utils/styles';
 import {GroceryItem} from 'src/types';
+import {InputField} from './InputField';
 
-export const InputField = ({
+export const NewItem = ({
 	searchItem,
 	saveNewItem,
 }: {
@@ -14,7 +14,6 @@ export const InputField = ({
 }) => {
 	const [input, setInput] = useState<string>('');
 	const [suggestions, setSuggestions] = useState<GroceryItem[]>([]);
-	const styles = useStyles();
 
 	function handleTextInput(text: string) {
 		setInput(text);
@@ -48,14 +47,7 @@ export const InputField = ({
 
 	return (
 		<>
-			<TextInput
-				className={`p-4 z-30 text-lg tracking-widest shadow-none text-center`}
-				style={{...styles.textColor, ...styles.inputField}}
-				placeholder="Insert item here"
-				value={input}
-				onChangeText={handleTextInput}
-				onSubmitEditing={e => handleTextSubmit(e.nativeEvent.text)}
-			/>
+			<InputField {...{input, handleTextInput, handleTextSubmit}} />
 			{areThereSuggestions(suggestions) && (
 				<SuggestionsOverlay
 					onSelectSuggestion={handleTextSubmit}

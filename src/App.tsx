@@ -2,9 +2,10 @@ import {FlatList, SafeAreaView} from 'react-native';
 import {useState} from 'react';
 import {GroceryItem} from './types';
 import {GroceryItemCheckbox} from './components/GroceryItemCheckbox';
-import {InputField} from './components/InputField';
+import {NewItem} from './components/NewItem';
 import {AppProvider} from './components/AppProvider';
 import TrieSearch from 'trie-search';
+import {Header} from './components/Header';
 
 const trie = new TrieSearch<GroceryItem>('label', {min: 3, ignoreCase: true});
 
@@ -40,11 +41,19 @@ function App(): React.JSX.Element {
 		// TODO: remove from list
 		console.warn(item.label);
 	}
+	// TODO: consider:
+	// 1. moving the function that dismisses the suggestions overlay
+	// to this level, in order to pass it to the grocery item checkbox
+	// 2. wrapping a pressable around this flatlist and pass that function too
+	//
+	// 3. On android, adding a item makes the first half of the checkbox become
+	//       visible??
 
 	return (
 		<AppProvider>
 			<SafeAreaView className="flex-1">
-				<InputField {...{searchItem, saveNewItem}} />
+				<Header />
+				<NewItem {...{searchItem, saveNewItem}} />
 				<FlatList
 					className={'flex'}
 					data={groceryList}
