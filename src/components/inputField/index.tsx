@@ -4,16 +4,17 @@ import {areThereSuggestions, isInputLongEnough} from './utils';
 import {SuggestionsOverlay} from './SuggestionsOverlay';
 import {useAppContext} from '../AppProvider';
 import {getTextColor} from '@utils/styles';
+import {GroceryItem} from 'src/types';
 
 export const InputField = ({
 	searchItem,
 	saveNewItem,
 }: {
-	searchItem: (itemName: string) => string[];
+	searchItem: (itemName: string) => GroceryItem[];
 	saveNewItem: (itemName: string) => void;
 }) => {
 	const [input, setInput] = useState<string>('');
-	const [suggestions, setSuggestions] = useState<string[]>([]);
+	const [suggestions, setSuggestions] = useState<GroceryItem[]>([]);
 	const {theme} = useAppContext();
 	const textColor = getTextColor(theme);
 

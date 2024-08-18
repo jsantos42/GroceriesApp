@@ -2,13 +2,14 @@ import {Pressable, View} from 'react-native';
 import {Suggestion} from './Suggestion';
 import {getBackgroundColor} from '@utils/styles';
 import {useAppContext} from '../AppProvider';
+import {GroceryItem} from 'src/types';
 
 export const SuggestionsOverlay = ({
 	suggestions,
 	onSelectSuggestion,
 	hideSuggestionOverlay,
 }: {
-	suggestions: string[];
+	suggestions: GroceryItem[];
 	onSelectSuggestion: (text: string) => void;
 	hideSuggestionOverlay: () => void;
 }) => {
@@ -19,10 +20,11 @@ export const SuggestionsOverlay = ({
 			<View
 				className={`absolute top-16 z-20 w-full ${getBackgroundColor(theme)}`}
 				style={{elevation: 2}}>
-				{suggestions.map(suggestion => (
+				{suggestions.map(({name, label}) => (
 					<Suggestion
-						key={suggestion}
-						{...{suggestion, onSelectSuggestion}}
+						key={name}
+						suggestion={label}
+						{...{onSelectSuggestion}}
 					/>
 				))}
 			</View>

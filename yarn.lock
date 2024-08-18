@@ -3240,6 +3240,7 @@ __metadata:
     react-native-vector-icons: ^10.1.0
     react-test-renderer: 18.2.0
     tailwindcss: 3.3.2
+    trie-search: ^2.0.0
     ts-jest: ^29.1.2
     ts-node: ^10.9.2
     typescript: 5.0.4
@@ -5910,6 +5911,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hasharray@npm:^1.1.1":
+  version: 1.1.2
+  resolution: "hasharray@npm:1.1.2"
+  dependencies:
+    jclass: ^1.0.1
+  checksum: 2ab4b2bd2d5814c878629629d4e6dae3568a6c21f66c0bf4cca4f6677ef251a3001917af4a187e2b2b8bf461ec221064a8ecf1e4817ab87e4be9a90b61b5ec8c
+  languageName: node
+  linkType: hard
+
 "hasown@npm:^2.0.0, hasown@npm:^2.0.1, hasown@npm:^2.0.2":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
@@ -6668,6 +6678,13 @@ __metadata:
   bin:
     jake: bin/cli.js
   checksum: f2dc4a086b4f58446d02cb9be913c39710d9ea570218d7681bb861f7eeaecab7b458256c946aeaa7e548c5e0686cc293e6435501e4047174a3b6a504dcbfcaae
+  languageName: node
+  linkType: hard
+
+"jclass@npm:^1.0.1":
+  version: 1.2.1
+  resolution: "jclass@npm:1.2.1"
+  checksum: 89ce795457d9cc381b1e433b45c6ad4aab0553238fb129c9fae9d77646abf44e7dc248525fbe1d9dc537a6fd65a9477a8a131e184646c4e02ba7e0c86ab98c93
   languageName: node
   linkType: hard
 
@@ -10440,6 +10457,15 @@ __metadata:
   version: 0.0.3
   resolution: "tr46@npm:0.0.3"
   checksum: 726321c5eaf41b5002e17ffbd1fb7245999a073e8979085dacd47c4b4e8068ff5777142fc6726d6ca1fd2ff16921b48788b87225cbc57c72636f6efa8efbffe3
+  languageName: node
+  linkType: hard
+
+"trie-search@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "trie-search@npm:2.0.0"
+  dependencies:
+    hasharray: ^1.1.1
+  checksum: 93eff809a0610de7f8848c6307a8e4fce7743c32b6575b946c69ac5c6ca053a2e1a74fc7b6ec5d33d5811b609c38e99d92ad8dddea6bf3bbd6a3377c61e6f9fd
   languageName: node
   linkType: hard
 

@@ -1,14 +1,15 @@
 import {FlatList, SafeAreaView} from 'react-native';
 import {useState} from 'react';
 import {GroceryItem} from './types';
-import {tempGroceryList} from './initialData';
 import {GroceryItemCheckbox} from './components/GroceryItemCheckbox';
 import {InputField} from './components/InputField';
 import {AppProvider} from './components/AppProvider';
+import TrieSearch from 'trie-search';
+
+const trie = new TrieSearch<GroceryItem>('label', {min: 3, ignoreCase: true});
 
 function App(): React.JSX.Element {
-	const [groceryList, setGroceryList] =
-		useState<GroceryItem[]>(tempGroceryList);
+	const [groceryList, setGroceryList] = useState<GroceryItem[]>([]);
 
 	function getNewEntryFromInput(input: string): GroceryItem {
 		const name = normalizeKeyName(input);
@@ -25,14 +26,13 @@ function App(): React.JSX.Element {
 	}
 
 	function searchItem(input: string) {
-		// TODO: return suggestion from trie
-		return ['cucu', 'foo', 'bar'];
+		return trie.search(input);
 	}
 
 	function saveNewItem(input: string) {
 		// TODO: check if item does not exist already
 		const newRecord = getNewEntryFromInput(input);
-		// TODO: add to trie
+		trie.add(newRecord);
 		setGroceryList([...groceryList, newRecord]);
 	}
 
