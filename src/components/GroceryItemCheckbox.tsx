@@ -16,7 +16,7 @@ export const GroceryItemCheckbox = ({
 			checked={false}
 			title={item.label}
 			containerStyle={styles.checkBoxContainer}
-			textStyle={styles.checkBoxText}
+			textStyle={{...styles.checkBoxText, ...styles.textColor}}
 			onIconPress={() => markAsChecked(item)}
 		/>
 	);

@@ -1,6 +1,6 @@
 import {Pressable, View} from 'react-native';
 import {Suggestion} from './Suggestion';
-import {getBackgroundColor} from '@utils/styles';
+import {getBackgroundColor, useStyles} from '@utils/styles';
 import {useAppContext} from '../AppProvider';
 import {GroceryItem} from 'src/types';
 
@@ -14,12 +14,13 @@ export const SuggestionsOverlay = ({
 	hideSuggestionOverlay: () => void;
 }) => {
 	const {theme} = useAppContext();
+	const styles = useStyles();
 
 	return (
 		<>
 			<View
-				className={`absolute top-16 z-20 w-full ${getBackgroundColor(theme)}`}
-				style={{elevation: 2}}>
+				className={`absolute top-20 z-20 w-full ${getBackgroundColor(theme)}`}
+				style={styles.elevation2}>
 				{suggestions.map(({name, label}) => (
 					<Suggestion
 						key={name}
@@ -30,7 +31,7 @@ export const SuggestionsOverlay = ({
 			</View>
 			<Pressable
 				className={`absolute top-5 z-10 w-full h-full ${getBackgroundColor(theme)} opacity-50`}
-				style={{elevation: 1}}
+				style={styles.elevation1}
 				onPress={hideSuggestionOverlay}
 			/>
 		</>

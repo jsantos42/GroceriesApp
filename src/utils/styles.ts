@@ -5,18 +5,28 @@ export const useStyles = () => {
 	const {theme} = useAppContext();
 
 	return StyleSheet.create({
+		backgroundColor: {
+			backgroundColor: getBackgroundColor(theme),
+		},
+		textColor: {
+			color: getContrastColor(theme),
+		},
 		checkBoxContainer: {
 			backgroundColor: 'transparent',
 		},
 		checkBoxText: {
 			fontSize: 18,
-			color: `${getContrastColor(theme)}`,
 		},
-		overlay: {
-			width: '100%',
-			position: 'absolute',
-			top: 50,
-			backgroundColor: getBackgroundColor(theme),
+		inputField: {
+			elevation: 3,
+			borderBottomWidth: 1,
+			borderBottomColor: getContrastColor(theme),
+		},
+		elevation1: {
+			elevation: 1,
+		},
+		elevation2: {
+			elevation: 2,
 		},
 	});
 };
