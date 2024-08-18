@@ -30,6 +30,8 @@ export const InputField = ({
 
 		if (areThereSuggestions(foundSuggestions)) {
 			setSuggestions(foundSuggestions);
+		} else {
+			setSuggestions([]);
 		}
 	}
 
