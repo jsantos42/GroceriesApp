@@ -2,6 +2,8 @@ import {useState} from 'react';
 import {Keyboard, TextInput} from 'react-native';
 import {areThereSuggestions, isInputLongEnough} from './utils';
 import {SuggestionsOverlay} from './SuggestionsOverlay';
+import {useAppContext} from '../AppProvider';
+import {getTextColor} from '@utils/styles';
 
 export const InputField = ({
 	searchItem,
@@ -12,6 +14,8 @@ export const InputField = ({
 }) => {
 	const [input, setInput] = useState<string>('');
 	const [suggestions, setSuggestions] = useState<string[]>([]);
+	const {theme} = useAppContext();
+	const textColor = getTextColor(theme);
 
 	function handleTextInput(text: string) {
 		setInput(text);
@@ -44,7 +48,7 @@ export const InputField = ({
 	return (
 		<>
 			<TextInput
-				className="text-base p-3 tracking-wider z-30"
+				className={`p-3 z-30 text-lg tracking-widest ${textColor}`}
 				style={{elevation: 3}}
 				placeholder="Insert item here"
 				value={input}
