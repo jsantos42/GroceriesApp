@@ -4,17 +4,13 @@ import {useAppContext} from '../components/AppProvider';
 export const useStyles = () => {
 	const {theme} = useAppContext();
 
-	function getTextColorStylesheet() {
-		return theme === 'dark' ? 'white' : 'black';
-	}
-
 	return StyleSheet.create({
 		checkBoxContainer: {
 			backgroundColor: 'transparent',
 		},
 		checkBoxText: {
 			fontSize: 18,
-			color: `${getTextColorStylesheet()}`,
+			color: `${getContrastColor(theme)}`,
 		},
 		overlay: {
 			width: '100%',
@@ -31,6 +27,6 @@ export function getBackgroundColor(theme: Theme) {
 	return theme === 'dark' ? 'bg-black' : 'bg-white';
 }
 
-export function getTextColor(theme: Theme) {
-	return theme === 'dark' ? 'text-white' : 'text-black';
+export function getContrastColor(theme: Theme) {
+	return theme === 'dark' ? 'white' : 'black';
 }

@@ -3,7 +3,7 @@ import {Keyboard, TextInput} from 'react-native';
 import {areThereSuggestions, isInputLongEnough} from './utils';
 import {SuggestionsOverlay} from './SuggestionsOverlay';
 import {useAppContext} from '../AppProvider';
-import {getTextColor} from '@utils/styles';
+import {getContrastColor} from '@utils/styles';
 import {GroceryItem} from 'src/types';
 
 export const InputField = ({
@@ -16,7 +16,7 @@ export const InputField = ({
 	const [input, setInput] = useState<string>('');
 	const [suggestions, setSuggestions] = useState<GroceryItem[]>([]);
 	const {theme} = useAppContext();
-	const textColor = getTextColor(theme);
+	const textColor = `text-${getContrastColor(theme)}`;
 
 	function handleTextInput(text: string) {
 		setInput(text);

@@ -13,7 +13,6 @@ export const GroceryItemCheckbox = ({
 
 	return (
 		<CheckBox
-			className={'text-black text-base'}
 			checked={false}
 			title={item.label}
 			containerStyle={styles.checkBoxContainer}
