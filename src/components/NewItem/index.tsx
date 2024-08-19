@@ -38,11 +38,11 @@ export const NewItem = ({
 
 	function handleTextSubmit(text: string) {
 		saveNewItem(text);
-		setInput('');
 		hideSuggestionOverlay();
 	}
 
 	function hideSuggestionOverlay() {
+		setInput('');
 		setSuggestions([]);
 		Keyboard.dismiss();
 	}
