@@ -44,9 +44,13 @@ function App(): React.JSX.Element {
 	}
 
 	function markAsChecked(item: GroceryItem) {
-		// TODO: remove from list
-		console.warn(item.label);
+		const updatedList = groceryList.filter(
+			({label}) => label !== item.label
+		);
+
+		setGroceryList(updatedList);
 	}
+
 	// TODO: consider:
 	// 1. moving the function that dismisses the suggestions overlay
 	// to this level, in order to pass it to the grocery item checkbox
