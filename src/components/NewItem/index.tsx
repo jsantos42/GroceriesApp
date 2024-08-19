@@ -38,13 +38,13 @@ export const NewItem = ({
 
 	function handleTextSubmit(text: string) {
 		saveNewItem(text);
-		setSuggestions([]);
 		setInput('');
-		Keyboard.dismiss();
+		hideSuggestionOverlay();
 	}
 
 	function hideSuggestionOverlay() {
 		setSuggestions([]);
+		Keyboard.dismiss();
 	}
 
 	return (
