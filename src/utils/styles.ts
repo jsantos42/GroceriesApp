@@ -14,10 +14,6 @@ export const useStyles = () => {
 		checkBoxText: {
 			fontSize: 18,
 		},
-		newItemCheckBox: {
-			width: 0,
-			backgroundColor: 'transparent',
-		},
 		elevation1: {
 			elevation: 1,
 		},

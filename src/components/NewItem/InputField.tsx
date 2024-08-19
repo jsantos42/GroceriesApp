@@ -1,6 +1,7 @@
-import {CheckBox} from '@rneui/base';
+import {Icon} from '@rneui/base';
 import {TextInput, View} from 'react-native';
-import {useStyles} from '@utils/styles';
+import {getContrastColor, useStyles} from '@utils/styles';
+import {useAppContext} from '../AppProvider';
 
 export const InputField = ({
 	input,
@@ -12,11 +13,17 @@ export const InputField = ({
 	handleTextSubmit: (input: string) => void;
 }) => {
 	const styles = useStyles();
+	const {theme} = useAppContext();
 	return (
-		<View className="flex flex-row items-end">
-			<CheckBox checked={false} containerStyle={styles.newItemCheckBox} />
+		<View className="pl-4 flex flex-row items-center">
+			<Icon
+				name="add"
+				type="material"
+				color={getContrastColor(theme)}
+				size={27}
+			/>
 			<TextInput
-				className="p-4 w-full text-lg tracking-widest shadow-none"
+				className="p-4 pl-2.5 w-full text-lg tracking-widest shadow-none"
 				style={styles.textColor}
 				placeholder="Insert item here"
 				value={input}

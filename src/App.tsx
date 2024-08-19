@@ -52,8 +52,6 @@ function App(): React.JSX.Element {
 	// to this level, in order to pass it to the grocery item checkbox
 	// 2. wrapping a pressable around this flatlist and pass that function too
 	//
-	// 3. On android, adding a item makes the first half of the checkbox become
-	//       visible??
 
 	return (
 		<AppProvider>
