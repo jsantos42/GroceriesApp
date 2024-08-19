@@ -1,5 +1,5 @@
 import {Icon} from '@rneui/base';
-import {TextInput, View} from 'react-native';
+import {Platform, TextInput, View} from 'react-native';
 import {getContrastColor, useStyles} from '@utils/styles';
 import {useAppContext} from '../AppProvider';
 
@@ -14,6 +14,8 @@ export const InputField = ({
 }) => {
 	const styles = useStyles();
 	const {theme} = useAppContext();
+	const textSize = Platform.OS === 'ios' ? 'text-xl' : 'text-lg';
+
 	return (
 		<View className="pl-4 flex flex-row items-center">
 			<Icon
@@ -23,7 +25,7 @@ export const InputField = ({
 				size={27}
 			/>
 			<TextInput
-				className="p-4 pl-2.5 w-full text-lg tracking-widest shadow-none"
+				className={`p-4 pl-2.5 w-full text-lg ${textSize} tracking-widest shadow-none`}
 				style={styles.textColor}
 				placeholder="Insert item here"
 				value={input}
