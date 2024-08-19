@@ -8,9 +8,11 @@ import {InputField} from './InputField';
 export const NewItem = ({
 	searchItem,
 	saveNewItem,
+	deleteItem,
 }: {
 	searchItem: (itemName: string) => GroceryItem[];
 	saveNewItem: (itemName: string) => void;
+	deleteItem: (itemName: string) => void;
 }) => {
 	const [input, setInput] = useState<string>('');
 	const [suggestions, setSuggestions] = useState<GroceryItem[]>([]);
@@ -51,6 +53,7 @@ export const NewItem = ({
 			{areThereSuggestions(suggestions) && (
 				<SuggestionsOverlay
 					onSelectSuggestion={handleTextSubmit}
+					onDeleteSuggestion={deleteItem}
 					{...{suggestions, hideSuggestionOverlay}}
 				/>
 			)}

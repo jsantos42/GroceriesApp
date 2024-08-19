@@ -8,9 +8,11 @@ export const SuggestionsOverlay = ({
 	suggestions,
 	onSelectSuggestion,
 	hideSuggestionOverlay,
+	onDeleteSuggestion,
 }: {
 	suggestions: GroceryItem[];
 	onSelectSuggestion: (text: string) => void;
+	onDeleteSuggestion: (text: string) => void;
 	hideSuggestionOverlay: () => void;
 }) => {
 	const {theme} = useAppContext();
@@ -25,7 +27,7 @@ export const SuggestionsOverlay = ({
 					<Suggestion
 						key={name}
 						suggestion={label}
-						{...{onSelectSuggestion}}
+						{...{onSelectSuggestion, onDeleteSuggestion}}
 					/>
 				))}
 			</View>

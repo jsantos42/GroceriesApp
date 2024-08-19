@@ -37,6 +37,12 @@ function App(): React.JSX.Element {
 		setGroceryList([...groceryList, newRecord]);
 	}
 
+	function deleteItem(label: string) {
+		console.warn(label);
+		// TODO: implement this in the trie package
+		// trie.remove()
+	}
+
 	function markAsChecked(item: GroceryItem) {
 		// TODO: remove from list
 		console.warn(item.label);
@@ -53,7 +59,7 @@ function App(): React.JSX.Element {
 		<AppProvider>
 			<SafeAreaView className="flex-1">
 				<Header />
-				<NewItem {...{searchItem, saveNewItem}} />
+				<NewItem {...{searchItem, saveNewItem, deleteItem}} />
 				<FlatList
 					className={'flex'}
 					data={groceryList}
