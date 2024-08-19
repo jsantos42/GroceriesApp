@@ -33,12 +33,6 @@ function App(): React.JSX.Element {
 		// trie.remove()
 	}
 
-	// TODO: consider:
-	// 1. moving the function that dismisses the suggestions overlay
-	// to this level, in order to pass it to the grocery item checkbox
-	// 2. wrapping a pressable around this flatlist and pass that function too
-	//
-
 	return (
 		<AppProvider>
 			<SafeAreaView className="flex-1">
