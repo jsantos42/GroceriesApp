@@ -34,7 +34,9 @@ function App(): React.JSX.Element {
 			saveNewItemOnTrie(trie, newRecord);
 		}
 		if (!isOnCurrentList(newRecord)) {
-			updateGroceryList(groceryList, newRecord, setGroceryList);
+			const updatedList = [...groceryList, newRecord];
+
+			updateGroceryList(updatedList, setGroceryList);
 		}
 	}
 
@@ -54,12 +56,19 @@ function App(): React.JSX.Element {
 		// trie.remove()
 	}
 
+	function markAsChecked(item: GroceryItem) {
+		const updatedList = groceryList.filter(
+			({label}) => label !== item.label
+		);
+		updateGroceryList(updatedList, setGroceryList);
+	}
+
 	return (
 		<AppProvider>
 			<SafeAreaView className="flex-1">
 				<Header />
 				<NewItem {...{searchItem, saveItem, deleteItem}} />
-				<GroceryList {...{groceryList, setGroceryList}} />
+				<GroceryList {...{groceryList, markAsChecked}} />
 			</SafeAreaView>
 		</AppProvider>
 	);

@@ -4,19 +4,11 @@ import {GroceryItemCheckbox} from './GroceryItemCheckbox';
 
 export const GroceryList = ({
 	groceryList,
-	setGroceryList,
+	markAsChecked,
 }: {
 	groceryList: GroceryItem[];
-	setGroceryList: (list: GroceryItem[]) => void;
+	markAsChecked: (item: GroceryItem) => void;
 }) => {
-	function markAsChecked(item: GroceryItem) {
-		const updatedList = groceryList.filter(
-			({label}) => label !== item.label
-		);
-
-		setGroceryList(updatedList);
-	}
-
 	return (
 		<FlatList
 			className={'flex'}

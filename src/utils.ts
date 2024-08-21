@@ -55,12 +55,9 @@ export function saveNewItemOnTrie(
 }
 
 export function updateGroceryList(
-	groceryList: GroceryItem[],
-	newRecord: GroceryItem,
+	updatedList: GroceryItem[],
 	setGroceryList: Dispatch<SetStateAction<GroceryItem[]>>
 ) {
-	const updatedList = [...groceryList, newRecord];
-
 	setGroceryList(updatedList);
 	AsyncStorage.setItem(GROCERY_LIST_STORAGE_KEY, JSON.stringify(updatedList));
 }
