@@ -7,11 +7,11 @@ import {InputField} from './InputField';
 
 export const NewItem = ({
 	searchItem,
-	saveNewItem,
+	saveItem,
 	deleteItem,
 }: {
 	searchItem: (itemName: string) => GroceryItem[];
-	saveNewItem: (itemName: string) => void;
+	saveItem: (itemName: string) => void;
 	deleteItem: (itemName: string) => void;
 }) => {
 	const [input, setInput] = useState<string>('');
@@ -37,7 +37,7 @@ export const NewItem = ({
 	}
 
 	function handleTextSubmit(text: string) {
-		saveNewItem(text);
+		saveItem(text);
 		hideSuggestionOverlay();
 	}
 

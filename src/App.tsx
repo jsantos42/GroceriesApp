@@ -20,11 +20,25 @@ function App(): React.JSX.Element {
 		return trie.search(input);
 	}
 
-	function saveNewItem(input: string) {
-		// TODO: check if item does not exist already
+	function isANewItem(record: GroceryItem) {
+		const results = searchItem(record.label);
+
+		return !results.some(({label}) => label === record.label);
+	}
+
+	function isOnCurrentList(record: GroceryItem) {
+		return groceryList.some(({label}) => label === record.label);
+	}
+
+	function saveItem(input: string) {
 		const newRecord = getNewEntryFromInput(input);
-		trie.add(newRecord);
-		setGroceryList([...groceryList, newRecord]);
+
+		if (isANewItem(newRecord)) {
+			trie.add(newRecord);
+		}
+		if (!isOnCurrentList(newRecord)) {
+			setGroceryList([...groceryList, newRecord]);
+		}
 	}
 
 	function deleteItem(label: string) {
@@ -37,7 +51,7 @@ function App(): React.JSX.Element {
 		<AppProvider>
 			<SafeAreaView className="flex-1">
 				<Header />
-				<NewItem {...{searchItem, saveNewItem, deleteItem}} />
+				<NewItem {...{searchItem, saveItem, deleteItem}} />
 				<GroceryList {...{groceryList, setGroceryList}} />
 			</SafeAreaView>
 		</AppProvider>
