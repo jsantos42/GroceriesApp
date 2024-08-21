@@ -1,12 +1,17 @@
 import {SafeAreaView} from 'react-native';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {GroceryItem} from './types';
 import {NewItem} from './components/NewItem';
 import {AppProvider} from './components/AppProvider';
 import TrieSearch from 'trie-search';
 import {Header} from './components/Header';
 import {GroceryList} from './components/GroceryList';
-import {getNewEntryFromInput} from './utils';
+import {
+	loadDataFromStorage,
+	getNewEntryFromInput,
+	saveNewItemOnTrie,
+	updateGroceryList,
+} from './utils';
 
 const trie = new TrieSearch<GroceryItem>('label', {
 	min: 3,
@@ -16,8 +21,21 @@ const trie = new TrieSearch<GroceryItem>('label', {
 function App(): React.JSX.Element {
 	const [groceryList, setGroceryList] = useState<GroceryItem[]>([]);
 
+	useEffect(() => loadDataFromStorage(trie, setGroceryList), []);
+
 	function searchItem(input: string) {
 		return trie.search(input);
+	}
+
+	function saveItem(input: string) {
+		const newRecord = getNewEntryFromInput(input);
+
+		if (isANewItem(newRecord)) {
+			saveNewItemOnTrie(trie, newRecord);
+		}
+		if (!isOnCurrentList(newRecord)) {
+			updateGroceryList(groceryList, newRecord, setGroceryList);
+		}
 	}
 
 	function isANewItem(record: GroceryItem) {
@@ -28,17 +46,6 @@ function App(): React.JSX.Element {
 
 	function isOnCurrentList(record: GroceryItem) {
 		return groceryList.some(({label}) => label === record.label);
-	}
-
-	function saveItem(input: string) {
-		const newRecord = getNewEntryFromInput(input);
-
-		if (isANewItem(newRecord)) {
-			trie.add(newRecord);
-		}
-		if (!isOnCurrentList(newRecord)) {
-			setGroceryList([...groceryList, newRecord]);
-		}
 	}
 
 	function deleteItem(label: string) {
