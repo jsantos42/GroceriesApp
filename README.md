@@ -1,3 +1,7 @@
+<div align="center">
+	<img src="./ScreenRecording.gif" alt="ScreenRecording" width=300>
+</div>
+
 # Groceries
 App for keeping a groceries list. \
 Features autocompletion based on the previous entered items (min 3 chars). \
